@@ -31,7 +31,6 @@ logger.Information("MinimumLevel from config is {0}", minimumLevel);
 using var configLogger = new LoggerConfiguration()
     .ReadFrom
     .Configuration(configuration)
-    // .Configuration(configuration.GetSection("Serilog"))
     .CreateLogger();
 
 configLogger.Warning("Warning message with {param}", "some-config-param-value");
@@ -40,7 +39,6 @@ configLogger.Warning("Warning message with {param}", "some-config-param-value");
 using var altConfigLogger = new LoggerConfiguration()
     .ReadFrom
     .Configuration(configuration, new ConfigurationReaderOptions { SectionName = "AltSerilog" })
-    // .Configuration(configuration.GetSection("Serilog"))
     .CreateLogger();
     
 altConfigLogger.Verbose("Verbose message to alt config logger");
